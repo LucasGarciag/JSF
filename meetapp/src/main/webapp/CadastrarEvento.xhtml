@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Meetapp</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+
+	<script>
+		//alert("JavaScript pode ser usado aqui!");
+	</script>
+</h:head>
+<h:body>
+
+	<!-- Colocando uma img com a biblioteca html -->
+	<div id="header">
+		<h:graphicImage id="logo" library="css/imagens" name="logo.jpg"
+			width="500px"></h:graphicImage>
+	</div>
+
+
+	<h1>Cadastrar Eventos</h1>
+	<div id="areaForm">
+		<h:form id="form">
+			<h:panelGrid columns="2">
+
+			<p:outputLabel value="Nome do evento:" />
+			<p:inputText value="#{eventoBean.evento.nome}" required="true" />
+
+			<p:outputLabel value="Nome da organização:" />
+			<p:inputText value="#{eventoBean.evento.organizacao}" required="true" />
+
+			<p:outputLabel value="Local:" />
+			<p:inputText value="#{eventoBean.evento.local}" />
+
+			<p:outputLabel value="Data:" />
+			<p:inputText value="#{eventoBean.evento.data}" type="Date"/>
+
+			<p:outputLabel value="Horário:" />
+			<p:inputText value="#{eventoBean.evento.horario}" type="time"/>
+
+			<p:commandButton value="Cadastrar"
+				action="#{eventoBean.adicionarEvento}" id="btn" />
+			
+			</h:panelGrid>
+		
+		</h:form>
+	</div>
+
+	<h1>Lista de eventos</h1>
+
+	<p:dataTable value="#{eventoBean.eventos}" var="e" border="1"
+		id="table">
+		<p:column headerText="Nome">#{e.nome}</p:column>
+		<p:column headerText="Organização">#{e.organizacao}</p:column>
+		<p:column headerText="Local">#{e.local}</p:column>
+		<p:column headerText="Data">#{e.data}</p:column>
+		<p:column headerText="Horário">#{e.horario}</p:column>
+	</p:dataTable>
+</h:body>
+</html>
